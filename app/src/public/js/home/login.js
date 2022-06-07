@@ -13,7 +13,7 @@ function login() {
     };
     
     fetch("/login", {
-        method : "post",
+        method : "POST",
         headers : {
             "Content-Type" : "application/json",
         }, 
@@ -21,5 +21,11 @@ function login() {
         
     })
     .then((res) => res.json())
-    .then(console.log);
+    .then((res) =>{
+        if (res.success) {
+            location.href = "/";
+        } else {
+            alert(res.msg);
+        }
+    });
 }
